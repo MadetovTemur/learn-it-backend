@@ -59,23 +59,12 @@
                   </div>
                </div>
               </div>
-            <div class="form-row">
-             <div class="form-group col-6">
-               <div class="icheck-material-white">
-                <input type="checkbox" id="user-checkbox" checked="" />
-                <label for="user-checkbox">Remember me</label>
-              </div>
-             </div>
-             <div class="form-group col-6 text-right">
-              <a href="reset-password.html">Reset Password</a>
-             </div>
-            </div>
              <button type="submit" class="btn btn-light btn-block">Sign In</button>            
              </form>
            </div>
           </div>
           <div class="card-footer text-center py-3">
-            <p class="text-warning mb-0">Do not have an account? <a href="register.html"> Sign Up here</a></p>
+            <p class="text-warning mb-0">Do not have an account? <a href="{{ route('register') }}"> Sign Up here</a></p>
           </div>
          </div>
     

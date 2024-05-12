@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: 1px solid orange;
+}
+
+html {
+	color-scheme: dark;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.wrapper {
+	background-image: url('./201.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 28cm;
+	height: 21cm;
+	position: relative;
+}
+
+.wrapper h1 {
+	position: absolute;
+	top: 14%;
+	left: 50%;
+	color: black;
+	font-size: 50px;
+}
+
+
+.wrapper * {
+	transform: translate(-50%, 50%);
+}

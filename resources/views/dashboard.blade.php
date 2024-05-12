@@ -75,7 +75,7 @@
 
     <div class="card">
         <div class="card-header">
-          Site Traffic
+          Certificate Grafik
           <div class="card-action">
             <div class="dropdown">
               <a

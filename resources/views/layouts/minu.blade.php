@@ -5,7 +5,7 @@ $minu = [
     'title' => 'Dashboard',
     'icon' => 'zmdi zmdi-view-dashboard', 
     'name' => 'dashboard',
-    'blank' => true
+    // 'blank' => true
   ],
   [
     'title' => 'Sertificates',

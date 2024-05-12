@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, SertificateController, AdminController, SertificateDiscriptionsController};
+use App\Http\Controllers\{ProfileController, SertificateController, 
+        AdminController, SertificateDiscriptionsController,
+        MainController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +24,7 @@ Route::get('/', function () {
 Route::get('/sertificate/{uuid}', [SertificateController::class, 'viewUser'])->name('sertificate');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [MainController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {

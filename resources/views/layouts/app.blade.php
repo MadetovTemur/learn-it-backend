@@ -131,5 +131,7 @@
 
     <!-- Index js -->
     {{-- <script src="{{ asset('assets/js/index.js') }}"></script> --}}
+
+    @stack('scripts')
   </body>
 </html>

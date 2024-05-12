@@ -50,7 +50,7 @@ class SertificateController extends Controller
 
         Sertificate::create($result);
 
-        return Redirect::route('sertificates.index');
+        return $request->input('redirect') ? Redirect::route('sertificates.create') : Redirect::route('sertificates.index');
     }
 
     /**

@@ -90,18 +90,18 @@
                     </div>
                   </a>
                 </li>
-                <li class="dropdown-divider"></li>
+                {{-- <li class="dropdown-divider"></li>
                 <li class="dropdown-item">
                   <i class="icon-envelope mr-2"></i> Inbox
-                </li>
+                </li> --}}
                 <li class="dropdown-divider"></li>
                 <li class="dropdown-item">
                   <a href="{{ route('profile.edit') }}"><i class="icon-wallet mr-2"></i> Account</a>
                 </li>
-                <li class="dropdown-divider"></li>
+                {{-- <li class="dropdown-divider"></li>
                 <li class="dropdown-item">
                   <i class="icon-settings mr-2"></i> Setting
-                </li>
+                </li> --}}
                 <li class="dropdown-divider"></li>
                 <li class="dropdown-item">
                   <a href="{{ route('logout') }}"><i class="icon-power mr-2"></i> Logout</a>

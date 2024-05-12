@@ -16,6 +16,7 @@
               <th scope="coll">Select</th>
               <th scope="col">ID</th>
               <th scope="col">Full Name</th>
+              <th scope="col">Created at</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -27,6 +28,7 @@
                 </td>
                 <td >{{ $item['id'] }}</td>
                 <td><a href="{{ route('sertificates.show', $item['id']) }}" >{{ $item['full_name'] }}</a></td>
+                <th scope="row">{{ $item['created_at'] }}</th>
                 <td style="display: flex; gap: 5px;">
                   <a style="padding: 6px 19px;" class="btn btn-light px-5 mb-2" href="{{ route('sertificates.edit', $item['id']) }}">
                     <i class="zmdi zmdi-brush"></i>

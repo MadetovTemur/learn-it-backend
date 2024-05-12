@@ -21,6 +21,7 @@
                   @endif
                 </th>
                 <th scope="col">Discriptions</th>
+                <th scope="col">Create At</th>
                 <th scope="col">Handle</th>
               </tr>
             </thead>
@@ -29,6 +30,7 @@
                 <tr>
                   <th scope="row">{{ $row['id'] }}</th>
                   <td>{{ Str::limit($row['discription'], 110) }}</td>
+                  <th scope="row">{{ $row['created_at'] }}</th>
                   <td>
                   	<a href="{{ route('discriptions.edit', $row['id']) }}" >EDIT</a>
                   </td>

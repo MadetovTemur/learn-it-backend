@@ -26,15 +26,20 @@ class MainController extends Controller
 						->whereMonth('created_at', $i)->count();
 		}	
 
-		// dd($yearData);
+		// $c = count($yearData) - 1;
+		// $month = $yearData[$c];
+		// $prevMonth = $yearData[$c - 1] == 0 ? (int) collect($yearData)->avg() : $yearData[$c - 1];
+		// $pro = round(($month * 100 / $prevMonth)  - 100, 2);
+
+
 		return view('dashboard',
 			[
 				'counts' => Sertificate::all()->count(),
-				'chart_1'=> $yearData
+				'chart_1'=> $yearData,
+				'prosetn' => 0
 			]
 		);
 	}
-
 
 
 }

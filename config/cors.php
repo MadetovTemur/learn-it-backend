@@ -28,6 +28,7 @@ return [
     'exposed_headers' => [],
 
     'max_age' => 0,
+    'refresh' => 120,
 
     'supports_credentials' => false,
 

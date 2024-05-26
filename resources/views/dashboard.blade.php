@@ -122,7 +122,7 @@
               <small class="mb-0"
                 >Overall Visitor
                 <span>
-                  <i class="fa fa-arrow-up"></i> 2.43%</span
+                  <i class="fa fa-arrow-up"></i> {{ $prosetn }}%</span
                 ></small
               >
             </div>

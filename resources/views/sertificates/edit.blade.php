@@ -5,7 +5,7 @@
 		<div class="card">
          <div class="card-body">
          <div class="card-title"></div>
-       <form action='{{ route('sertificates.update', $sertificate['id']) }}' method="POST">
+       <form action="{{ route('sertificates.update', $sertificate['id']) }}" method="POST">
       	   @csrf
       	   @method('PATCH')
            <div class="form-group">

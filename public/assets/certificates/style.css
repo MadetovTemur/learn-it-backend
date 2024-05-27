@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    paddding: 0;
+    box-sizing: border-box;
+}
+
 html {
     color-scheme: dark;
 }
@@ -9,6 +15,8 @@ body {
 }
 
 .btn {
+    margin-top: 10px;
+    margin-left: 10px;
     text-decoration: none;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -64,13 +72,14 @@ body {
 
 .certificate .certificate-name {
     left: 50%;
-    top: 33%;
-    font-size: 55px;
-
+    top: 37%;
+    font-size: 45px;
     background: linear-gradient(50deg, #008000, #00800099);
     -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    width: 80%;
+    text-align: center;
 }
 
 
@@ -79,14 +88,14 @@ body {
     font-weight: 500;
     text-align: center;
     width: 60%;
-    top: 50%;
+    top: 46%;
     left: 50%;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .certificate .certificate-qrcode {
     left: 13%;
-    top: 80%;
+    top: 78%;
     width: 110px;
 }
 

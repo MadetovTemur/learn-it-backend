@@ -82,6 +82,7 @@ class SertificateController extends Controller
         ]);
 
         $sertificate = Sertificate::where('id', $id)->first() ?? abort(404);
+        $sertificate->update($result);
 
         return Redirect::route('sertificates.index');
     }
@@ -91,8 +92,10 @@ class SertificateController extends Controller
      */
     public function destroy(string $id)
     {
-        $sertificate = Sertificate::where('id', $id)->first() ?? abort(404);
+        
 
+        $sertificate = Sertificate::where('id', $id)->first() ?? abort(404);
+        
         $sertificate->delete();
 
         return Redirect::route('sertificates.index');

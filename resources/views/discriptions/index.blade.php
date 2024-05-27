@@ -30,7 +30,7 @@
                 <tr>
                   <th scope="row">{{ $row['id'] }}</th>
                   <td>{{ Str::limit($row['discription'], 110) }}</td>
-                  <th scope="row">{{ $row['created_at'] }}</th>
+                  <th scope="row">{{  date_create($row['created_at'])->format('m.d.Y') }}</th>
                   <td>
                   	<a href="{{ route('discriptions.edit', $row['id']) }}" >EDIT</a>
                   </td>

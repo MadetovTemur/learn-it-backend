@@ -29,9 +29,9 @@ $minu = [
         data-simplebar-auto-hide="true"
       >
         <div class="brand-logo">
-          <a href="">
+          <a href="{{ asset('dashboard') }}">
             <img
-              src="{{ asset('assets/images/logo-icon.png') }}"
+              src="{{ asset('assets/certificates/logo.png') }}"
               class="logo-icon"
               alt="logo icon"
             />

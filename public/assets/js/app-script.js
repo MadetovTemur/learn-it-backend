@@ -88,6 +88,11 @@ $(function () {
   $("#theme14").click(theme14);
   $("#theme15").click(theme15);
 
+  $("#theme16").click(theme16);
+  $("#theme17").click(theme17);
+  $("#theme18").click(theme18);
+
+
   function theme1() {
     $("body").attr("class", "bg-theme bg-theme1");
     window.localStorage.setItem("theme", "bg-theme bg-theme1");
@@ -161,6 +166,22 @@ $(function () {
   function theme15() {
     $("body").attr("class", "bg-theme bg-theme15");
     window.localStorage.setItem("theme", "bg-theme bg-theme15");
+  }
+
+
+  function theme16() {
+    $("body").attr("class", "bg-theme bg-theme16");
+    window.localStorage.setItem("theme", "bg-theme bg-theme16");
+  }
+
+  function theme17() {
+    $("body").attr("class", "bg-theme bg-theme17");
+    window.localStorage.setItem("theme", "bg-theme bg-theme17");
+  }
+
+  function theme18() {
+    $("body").attr("class", "bg-theme bg-theme18");
+    window.localStorage.setItem("theme", "bg-theme bg-theme18");
   }
 
   if (window.localStorage.getItem("theme")) {

@@ -9,18 +9,15 @@
   
   <style type="text/css">
   	.certificate {
-		background-image: url('{{ asset('assets/certificates/image.png') }}');
+		background-image: url("{{ asset('assets/certificates/image.png') }}");
 		width: 29.7cm;
     	height: 22cm;
   	}
   </style>
 
 </head>
-<body id="img">
+<body onload="onliadDocument()">
   <!--effectes hover active disabled -->
-  <button type="button" id="dw_bt" class="btn" title="Download this certificate">DOWNLOAD</button>
-  <a class="btn" href="{{ route('sertificate', $sertificat['uuid']) }}">View User</a>
-
   <div class="wrapper" id="htmlContent">
     <div class="certificate">
       <h1 class="certificate-name">
@@ -42,20 +39,27 @@
   <script async type="text/javascript" src="{{ asset('assets/dom-to-image.js') }}"></script>
   <script type="text/javascript">
 		var ticket = document.getElementById('htmlContent');
-		// var img = document.getElementById('img');
-        var dowinload_button = document.getElementById('dw_bt');
+    
+    // function onliadDocument() {
+    //    domtoimage.toPng(ticket).then((data) => {
+    //         var img = document.createElement('img');
+    //         img.alt = '{{ $sertificat['full_name'] . '.png' }}'
+    //         img.src = data;
+    //         document.getElementsByTagName('body').inner;
+    //         // var imge =  document.createElement('img');
+    //         // imge.src = data;
+    //         // img.append(imge);
+    //     })
+    // }
 
-        dowinload_button.addEventListener('click', () => {
-            domtoimage.toPng(ticket).then((data) => {
-                var link = document.createElement('a');
-                link.download = '{{ $sertificat['full_name'] . '.png' }}'
-                link.href = data;
-                link.click();
-                // var imge =  document.createElement('img');
-                // imge.src = data;
-                // img.append(imge);
-            })
+    ticket.addEventListener('click', () => {
+        domtoimage.toPng(ticket).then((data) => {
+          var link = document.createElement('a');
+          link.download = '{{ $sertificat['full_name'] . '.png' }}'
+          link.href = data;
+          link.click();
         })
+    })
 	</script>
 </body>
 

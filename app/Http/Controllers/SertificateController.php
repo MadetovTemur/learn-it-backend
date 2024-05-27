@@ -101,9 +101,9 @@ class SertificateController extends Controller
     public function viewUser(string $uuid)
     {
         Str::isUuid($uuid) ?? abort(404);
-        
-        $sertificate = Sertificate::where('uuid', $uuid)->first() ?? abort(404);
-        $qrcode = $this->qrcodegenerate( (string) route('sertificate', $sertificate['uuid']) );
-        return view('sertificates.user');
+
+        return view('sertificates.user', 
+                ['sertificat' => Sertificate::where('uuid', $uuid)->first() ?? abort(404)
+            ]);
     }
 }

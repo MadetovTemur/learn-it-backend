@@ -3,6 +3,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Refresh" content="300">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -16,7 +17,8 @@
     <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/js/pace.min.js') }}"></script>
     <!--favicon-->
-    <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('assets/certificates/logo.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('assets/certificates/logo.png') }}" type="png">
     <!-- Vector CSS -->
     <link
       href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}"
@@ -90,6 +92,10 @@
             <li id="theme4"></li>
             <li id="theme5"></li>
             <li id="theme6"></li>
+
+            <li id="theme16"></li>
+            <li id="theme17"></li>
+            <li id="theme18"></li>
           </ul>
 
           <p class="mb-0">Gradient Background</p>

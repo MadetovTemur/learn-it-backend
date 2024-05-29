@@ -11,9 +11,9 @@
   <style type="text/css">
   	.certificate {
       background-image: url('{{ asset('assets/certificates/image.png') }}');
-      width: 29.7cm;
-        height: 22cm;
-      }
+      width: 1121.33px;
+      height: 793.33px;
+    }
   </style>
 
 </head>

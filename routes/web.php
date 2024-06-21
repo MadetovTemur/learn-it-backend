@@ -17,17 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return redirect()->route('login');
     return view('welcome');
 });
 
-
 Route::get('/sertificate/{uuid}', [SertificateController::class, 'viewUser'])->name('sertificate');
 
-
-Route::get('/dashboard', [MainController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-
-
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [MainController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
     Route::resource('sertificates', SertificateController::class);
     Route::resource('discriptions', SertificateDiscriptionsController::class);

@@ -1,38 +1,72 @@
 <x-app-layout>
-    <x-slot name="title">
-       Update Sertificate  
-    </x-slot>
-		<div class="card">
-         <div class="card-body">
-         <div class="card-title"></div>
-       <form action="{{ route('sertificates.update', $sertificate['id']) }}" method="POST">
-      	   @csrf
-      	   @method('PATCH')
-           <div class="form-group">
-            <label for="input-1">Full Name</label>
-            <input type="text" class="form-control" name="full_name" id="input-1" placeholder="Enter Your Name" value="{{ $sertificate['full_name'] }}">
-            @error('full_name')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-           </div>
+  <x-slot name="title">
+      Create Sertificate
+  </x-slot>
+  <div class="card">
+      <div class="card-title mt-2 ml-3">
+      </div>
+      <div class="card-body">
 
-           <div class="form-group">
-            <label for="input-1">Serificat Discription</label>
-            <input type="number" class="form-control" name="sertificate_discription_id" id="input-1" value="{{ $sertificate['sertificate_discription_id'] }}" placeholder="Enter Dertificate Discription ID">
-            <span style="padding: 10px; color: red;"> 
-              <a href="{{ route('discriptions.index') }}">
-                All Disciptions
-              </a>
-            </span>
-            @error('sertificate_discription_id')
-              <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-           </div>
-         <div class="form-group">
-          <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Update</button>
-        </div>
-     	</form>
-    </div>
-    </div>
-    
+          <form action='{{ route('sertificates.store') }}' method="POST" id="form">
+              @csrf
+              <div class="form-group">
+                  <label for="full_name">Full Name</label>
+                  <input type="text" class="form-control" name="full_name" id="full_name"
+                      value="{{ old('full_name')  }}">
+                  @error('full_name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+              </div>
+
+              <div class="form-group">
+                  <label for="telephone">Telephone</label>
+                  <input type="text" class="form-control" name="telephone" id="telephone"
+                      value="{{ old('telephone') }}">
+                  @error('telephone')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+              </div>
+
+              <div class="form-group">
+                  <label for="message">Serificat Discription</label>
+                  <textarea type="text" class="form-control" style="height: 250px" name="discription" id="message"></textarea>
+                  @error('discription')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+              </div>
+
+              <div class="form-group">
+                  <button type="submit" class="btn btn-light px-5">Inster</button>
+                  <button type="reset" class="btn btn-light px-5">Clear</button>
+              </div>
+          </form>
+
+      </div>
+  </div>
+  @push('scripts')
+      <script>
+          $(document).ready(function() {
+              $('#form').on('submit', function(e) {
+                  e.preventDefault();
+                  
+                  $.ajax({
+                      url: $(this).context.action, // The URL to which the request is sent
+                      method: 'POST',
+                      dataType: 'json',
+                      data: $(this).serializeArray(),
+                      success: function(response) {
+                          var message = $('#message').val();                    
+                          $('#form')[0].reset();
+                          $('#message').val(message);
+                         
+                      },
+                      error: function(data) {
+                          console.error('Error:', data);
+                      }
+                  });
+
+              });
+          });
+      </script>
+  @endpush
 </x-app-layout>

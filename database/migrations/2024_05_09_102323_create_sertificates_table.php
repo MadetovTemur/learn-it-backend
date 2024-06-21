@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('sertificates', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
+            $table->longText('discription');
             $table->string('telephone', 30)->nullable();
             $table->uuid();
-            $table->integer('sertificate_discription_id');
             $table->timestamps();
             $table->softDeletes();
         });

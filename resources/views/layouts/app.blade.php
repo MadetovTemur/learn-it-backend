@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="Refresh" content="300">
+    {{-- <meta http-equiv="Refresh" content="300"> --}}
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,8 +17,7 @@
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/certificates/logo.png') }}" type="image/x-icon" />
     <link rel="shortcut icon" href="{{ asset('assets/certificates/logo.png') }}" type="png">
-    <!-- Vector CSS -->
-    <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
+    
     <!-- simplebar CSS-->
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <!-- Bootstrap core CSS-->
@@ -62,12 +61,12 @@
         </a>
         <!--End Back To Top Button-->
 
-        <!--Start footer-->
+        {{-- <!--Start footer-->
         <footer class="footer">
             <div class="container">
                 <div class="text-center">Copyright © {{ date('Y') }} Dashtreme Admin</div>
             </div>
-        </footer>
+        </footer> --}}
         <!--End footer-->
 
         <!--start color switcher-->
@@ -121,8 +120,7 @@
     <script src="{{ asset('assets/plugins/simplebar/js/simplebar.js') }}"></script>
     <!-- sidebar-menu js -->
     <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
-    <!-- loader scripts -->
-    <script src="{{ asset('assets/js/jquery.loading-indicator.js') }}"></script>
+
     <!-- Custom scripts -->
     <script src="{{ asset('assets/js/app-script.js') }}"></script>
     <!-- Chart js -->

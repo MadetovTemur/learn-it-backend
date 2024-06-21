@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Redirect;
 
 use App\Models\{SertificateDiscriptions, Sertificate};
 
-
-use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRGdImagePNG;
-
-
 class AdminController extends Controller
 {
 
@@ -22,7 +16,6 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-    	dd('ds');
         $request->query();
         $sertificates = Sertificate::paginate(50);
 

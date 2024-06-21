@@ -16,13 +16,11 @@ class Sertificate extends Model
 
     protected $fillable = [
         'full_name',
-        'sertificate_discription_id', 
+        'discription', 
+        'telephone',
         'uuid'
     ];
 
 
-    public function sertificate_discription()
-    {
-        return $this->hasOne(SertificateDiscriptions::class, 'id', 'sertificate_discription_id');
-    }
+
 }

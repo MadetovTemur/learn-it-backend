@@ -17,7 +17,6 @@ class SertificateController extends Controller
      */
     public function index(Request $request)
     {
-        $request->query();
         $sertificates = Sertificate::paginate(50);
 
         return view('sertificates.index', ['sertificates' 
@@ -37,15 +36,20 @@ class SertificateController extends Controller
      */
     public function store(Request $request)
     {
+        
         $result = $request->validate([
             'full_name' => ['required', 'max:255'],
-            'sertificate_discription_id' => ['required', 'exists:sertificate_discriptions,id']
+            'telephone' => ['nullable', 'unique:sertificates,telephone'],
+            'discription' => ['required']
         ]);
         $result['uuid'] = (string) Str::uuid();
 
         Sertificate::create($result);
 
-        return $request->input('redirect') ? Redirect::route('sertificates.create') : Redirect::route('sertificates.index');
+        return  response()->json([
+            'response' => 'ok',
+            'csrf-token' => csrf_token()
+        ], 200);
     }
 
     /**

@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [MainController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
     Route::resource('sertificates', SertificateController::class);
-    Route::resource('discriptions', SertificateDiscriptionsController::class);
+    // Route::resource('discriptions', SertificateDiscriptionsController::class);
     Route::resource('admins', AdminController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

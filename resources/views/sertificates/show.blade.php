@@ -35,12 +35,12 @@
                 {{ $sertificat['full_name'] }}
             </h1>
             <p class="certificate-body">
-                <?php echo $sertificat->sertificate_discription->discription; ?>
+                <?php echo $sertificat->discription; ?>
             </p>
             <div class="certificate-qrcode" id="qrcode" data-name="{{ $sertificat['full_name'] . '.png' }}"
                 data-url="{{ route('sertificate', $sertificat['uuid']) }}"></div>
             <p class="certificate-id">
-                ID: {{ Str::padLeft($sertificat['id'], 6, '0') }}
+                ID: № {{ Str::padLeft($sertificat['id'], 6, '0') }}
             </p>
         </div>
     </div>

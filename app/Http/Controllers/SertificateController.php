@@ -15,7 +15,7 @@ class SertificateController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index1(Request $request)
     {
         $query = $request->query();
 
@@ -31,14 +31,74 @@ class SertificateController extends Controller
 
         if (array_key_exists('q', $query) and !empty($query['q'])) {
             $q = $query['q'];
-            $sertificates = Sertificate::where('full_name', 'like', '%'.$q.'%')
-                ->orWhere('telephone', 'like', '%'.$q.'%')
-                ->orWhere('created_at', 'like', '%'.$q.'%')
-                ->get();
+            if(!strpos($q, ':')) {
+
+                $sertificates = Sertificate::where('full_name', 'like', '%'.$q.'%')
+                    ->orWhere('id', $q)
+                    ->orWhere('telephone', 'like', '%'.$q.'%')
+                    ->orWhereRaw("DATE_FORMAT(created_at, '%m.%d.%Y') LIKE ?", ['%' . $q . '%'])   
+                    ->get();
+            }else {
+                [$key, $value] = explode(':', $q);
+                if($key == 'id') {
+                    $sertificates = Sertificate::where($key,  $value)->get();
+                }elseif($key == 'date' or $key == 'created_at') { 
+                    $sertificates = Sertificate::orWhereRaw("DATE_FORMAT(created_at, '%m.%d.%Y') LIKE ?", ['%' . $value . '%'])   
+                        ->get();
+                }else {
+                    $sertificates = Sertificate::where($key, 'like', '%'.$value.'%')->get();
+                }
+                
+            }
+           
         }
         // dd($sertificate);
         return view('sertificates.index', ['sertificates' 
                                         => $sertificates]);
+    }
+
+    public function index(Request $request)
+    {
+        $query = $request->query();
+
+        // Сортировка
+        $sortKey = $query['sort'] ?? null;
+        $sortDirection = $sortKey && $sortKey[0] === '-' ? 'desc' : 'asc';
+        $sortColumn = $sortKey ? ltrim($sortKey, '-') : null;
+
+        $sertificates = Sertificate::when($sortColumn, function ($query, $sortColumn) use ($sortDirection) {
+            return $query->orderBy($sortColumn, $sortDirection);
+        })->paginate(50);
+
+        // Фильтрация
+        if (isset($query['q']) && !empty($query['q'])) {
+            $searchQuery = $query['q'];
+            // Обработка фильтрации...
+            // Добавьте соответствующую логику для фильтрации поискового запроса
+
+            $q = $query['q'];
+            if(!strpos($q, ':')) {
+
+                $sertificates = Sertificate::where('full_name', 'like', '%'.$q.'%')
+                    ->orWhere('id', $q)
+                    ->orWhere('telephone', 'like', '%'.$q.'%')
+                    ->orWhereRaw("DATE_FORMAT(created_at, '%m.%d.%Y') LIKE ?", ['%' . $q . '%'])   
+                    ->get();
+            }else {
+                [$key, $value] = explode(':', $q);
+                if($key == 'id') {
+                    $sertificates = Sertificate::where($key,  $value)->get();
+                }elseif($key == 'date' or $key == 'created_at') { 
+                    $sertificates = Sertificate::orWhereRaw("DATE_FORMAT(created_at, '%m.%d.%Y') LIKE ?", ['%' . $value . '%'])   
+                        ->get();
+                }else {
+                    $sertificates = Sertificate::where($key, 'like', '%'.$value.'%')->get();
+                }
+                
+            }
+        }
+
+        return view('sertificates.index', ['sertificates' => $sertificates]);
     }
 
     /**

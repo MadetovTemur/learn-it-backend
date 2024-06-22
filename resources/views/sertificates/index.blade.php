@@ -61,7 +61,7 @@
                                     <a href="{{ route('sertificates.show', $item['id']) }}">{{ $item['full_name'] }}</a>
                                 </td>
                                 <td>{{ $item['telephone'] }}</td>
-                                <th scope="row">{{ date_create($item['created_at'])->format('m.d.Y') }}</th>
+                                <th scope="row">{{ date_create($item['created_at'])->format('d.m.Y') }}</th>
                                 <td style="display: flex; gap: 5px;">
                                     <a style="padding: 6px 19px;" class="btn btn-light px-5 mb-2"
                                         href="{{ route('sertificates.edit', $item['id']) }}">
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        @if (!request()->query()['q'])
+        @if (!isset(request()->query()['q']))
             <div class="card-footer">
                 {{ $sertificates->links() }}
             </div>

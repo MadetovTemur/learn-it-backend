@@ -8,7 +8,8 @@
             </li>
             <li class="nav-item">
                 <form class="search-bar" style="display: flex">
-                    <input type="text" name="q" value="{{ request()->query()['q']  ?? '' }}" class="form-control" placeholder="Enter keywords">
+                    <input type="text" name="q" value="{{ request()->query()['q'] ?? '' }}"
+                        class="form-control" placeholder="Enter keywords">
                     <button type="submit" class="btn btn-light"><i class="icon-magnifier"></i></button>
                 </form>
             </li>
@@ -27,18 +28,18 @@
 
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li class="dropdown-item user-details">
-                        <a href="javaScript:void();">
-                            <div class="media">
-                                <div class="avatar">
-                                    <img class="align-self-start mr-3" src="{{ asset('assets/admin.jpg') }}"
-                                        alt="user avatar" />
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-2 user-title">{{ auth()->user()->name }}</h6>
-                                    <p class="user-subtitle">{{ auth()->user()->email }}</p>
-                                </div>
+
+                        <div class="media">
+                            <div class="avatar">
+                                <img class="align-self-start mr-3" src="{{ asset('assets/admin.jpg') }}"
+                                    alt="user avatar" />
                             </div>
-                        </a>
+                            <div class="media-body">
+                                <h6 class="mt-2 user-title">{{ auth()->user()->name }}</h6>
+                                <p class="user-subtitle">{{ auth()->user()->email }}</p>
+                            </div>
+                        </div>
+
                     </li>
                     <li class="dropdown-divider"></li>
                     {{-- <li class="dropdown-item">

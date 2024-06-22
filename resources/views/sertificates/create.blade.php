@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="telephone">Телефон </label>
                     <input type="text" class="form-control" name="telephone" id="telephone"
-                        value="{{ old('telephone') }}" placeholder="+99899 000 0202" >
+                        value="{{ old('telephone') }}" placeholder="+99899 000 0202">
                     @error('telephone')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -43,29 +43,6 @@
         </div>
     </div>
     @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('#form').on('submit', function(e) {
-                    e.preventDefault();
-                    
-                    $.ajax({
-                        url: $(this).context.action, // The URL to which the request is sent
-                        method: 'POST',
-                        dataType: 'json',
-                        data: $(this).serializeArray(),
-                        success: function(response) {
-                            var message = $('#message').val();                    
-                            $('#form')[0].reset();
-                            $('#message').val(message);
-                           
-                        },
-                        error: function(data) {
-                            console.error('Error:', data);
-                        }
-                    });
-
-                });
-            });
-        </script>
+        <script src="{{ asset('assets\pages\sertificates-create.js') }}"></script>
     @endpush
 </x-app-layout>

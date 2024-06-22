@@ -1,0 +1,1 @@
+$("#form").on("submit",(function(t){if(t.preventDefault(),!confirm("Вы хотите отредактировать пользователя?"))return!1;$.ajax({url:$(this).context.action,method:"POST",dataType:"json",data:$(this).serializeArray(),success:function(t){alert("Ok")},error:function(t){alert("Error open this console !")}})}));

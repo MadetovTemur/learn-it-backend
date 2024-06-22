@@ -68,8 +68,9 @@
                                         <i class="zmdi zmdi-brush"></i>
                                     </a>
                                     <a href="{{ route('sertificates.destroy', $item['id']) }}" id="delete_from"
-                                        class="btn btn-light px-5 mb-2" data-method="DELETE"><i class="zmdi zmdi-block"></i></a>
-                                    
+                                        class="btn btn-light px-5 mb-2" data-method="DELETE"><i
+                                            class="zmdi zmdi-block"></i></a>
+
                                 </td>
                             </tr>
                         @endforeach

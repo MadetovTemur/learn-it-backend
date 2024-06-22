@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        // \App\Models\SertificateDiscriptions::factory(50)->create();
         // \App\Models\Sertificate::factory(200)->create();
     }
 }

@@ -2,13 +2,13 @@
 
     $minu = [
         [
-            'title' => 'Dashboard',
+            'title' => 'Панель приборов',
             'icon' => 'zmdi zmdi-view-dashboard',
             'name' => 'dashboard',
             // 'blank' => true
         ],
         [
-            'title' => 'Sertificates',
+            'title' => 'Сертификаты',
             'icon' => 'zmdi zmdi-calendar-check',
             'name' => 'sertificates.index',
         ],
@@ -24,7 +24,7 @@
         </a>
     </div>
     <ul class="sidebar-menu do-nicescrol">
-        <li class="sidebar-header">MAIN NAVIGATION</li>
+        <li class="sidebar-header">ГЛАВНАЯ НАВИГАЦИЯ</li>
         @foreach ($minu as $item)
             <li>
                 <a href="@isset($item['name']) {{ route($item['name']) }} @else {{ $item['link'] ?? '' }}  @endisset"

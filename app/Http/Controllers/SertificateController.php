@@ -179,12 +179,13 @@ class SertificateController extends Controller
      */
     public function destroy(string $id)
     {
-        
         $sertificate = Sertificate::where('id', $id)->first() ?? abort(404);
-        
         $sertificate->delete();
 
-        return Redirect::route('sertificates.index');
+        return response()->json([
+            'response' => 'ok',
+            'id' => $id
+        ], 200);
     }
 
     public function viewUser(string $uuid)

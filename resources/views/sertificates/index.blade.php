@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="title">
-        Sertificates
+        Сертификаты
     </x-slot>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">
-                Sertificates
+                Сертификаты
             </h5>
 
             @push('navigation')
-                <a href="{{ route('sertificates.create') }}" class="ml-2 btn btn-light px-5">Create</a>
-                <button disabled class="btn btn-light px-5">Download</button>
+                <a href="{{ route('sertificates.create') }}" class="ml-2 btn btn-light px-5">Создавать</a>
+                <button disabled class="btn btn-light px-5">Скачать</button>
             @endpush
 
             <div class="table-responsive">
@@ -18,7 +18,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="coll">Select</th>
+                            <th scope="coll">Выбирать</th>
                             <th scope="col">
                                 @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-id')
                                     <a href="?sort=id">ID</a>
@@ -28,31 +28,31 @@
                             </th>
                             <th scope="col">
                                 @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-full_name')
-                                    <a href="?sort=full_name">Full Name</a>
+                                    <a href="?sort=full_name">Полное имя</a>
                                 @else
-                                    <a href="?sort=-full_name">Full Name</a>
+                                    <a href="?sort=-full_name">Полное имя</a>
                                 @endif
                             </th>
                             <th scope="col">
                                 @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-telephone')
-                                    <a href="?sort=telephone">Telephone</a>
+                                    <a href="?sort=telephone">Телефон</a>
                                 @else
-                                    <a href="?sort=-telephone">Telephone</a>
+                                    <a href="?sort=-telephone">Телефон</a>
                                 @endif
                             </th>
                             <th scope="col">
                                 @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-created_at')
-                                    <a href="?sort=created_at">Created at</a>
+                                    <a href="?sort=created_at">Дата создания</a>
                                 @else
-                                    <a href="?sort=-created_at">Created at</a>
+                                    <a href="?sort=-created_at">Дата создания</a>
                                 @endif
                             </th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Действие</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($sertificates as $item)
-                            <tr>
+                            <tr id="{{ $item['id'] }}">
                                 <td scope="row">
                                     <input type="checkbox" id="student" name="students[]" value="{{ $item['id'] }}">
                                 </td>
@@ -67,14 +67,9 @@
                                         href="{{ route('sertificates.edit', $item['id']) }}">
                                         <i class="zmdi zmdi-brush"></i>
                                     </a>
-                                    <form action="{{ route('sertificates.destroy', $item['id']) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button style="padding: 3px 19px;" class="btn btn-light px-5 mb-2"
-                                            type="submit">
-                                            <i class="zmdi zmdi-block"></i>
-                                        </button>
-                                    </form>
+                                    <a href="{{ route('sertificates.destroy', $item['id']) }}" id="delete_from"
+                                        class="btn btn-light px-5 mb-2" data-method="DELETE"><i class="zmdi zmdi-block"></i></a>
+                                    
                                 </td>
                             </tr>
                         @endforeach
@@ -91,8 +86,7 @@
 
 
     </div>
-
-    <script type="text/javascript">
-        var inputes = document.getElementsByName('students')
-    </script>
+    @push('scripts')
+        <script type="text/javascript" src="{{ asset('assets/pages/sertificates-index.js') }}"></script>
+    @endpush
 </x-app-layout>

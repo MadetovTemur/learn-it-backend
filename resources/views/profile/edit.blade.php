@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="title">
-        Admin Profile
+        Профиль администратора
     </x-slot>
 
     @if (session('status') === 'password-updated')
         <div class="alert alert-success">
-            <p>Save Password</p>
+            <p>Сохраните пароль</p>
         </div>
     @elseif(session('status') === 'profile-updated')
         <div class="alert alert-success">
-            <p>Save Profile</p>
+            <p>Сохранить профиль</p>
         </div>
     @endif
 
@@ -19,11 +19,11 @@
             <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
                 <li class="nav-item">
                     <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link active"><i
-                            class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+                            class="icon-note"></i> <span class="hidden-xs">Редактировать</span></a>
                 </li>
                 <li class="nav-item">
                     <a href="javascript:void();" data-target="#edit_password" data-toggle="pill" class="nav-link"><i
-                            class="icon-note"></i> <span class="hidden-xs">Edit Password</span></a>
+                            class="icon-note"></i> <span class="hidden-xs">Изменить пароль</span></a>
                 </li>
             </ul>
             <div class="tab-content p-3">
@@ -32,7 +32,7 @@
                         @csrf
                         @method('patch')
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Name</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Имя</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" name="name"
                                     value="{{ old('name', $user->name) }}" required autofocus autocomplete="name">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Электронная почта</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="email" name="email"
                                     value="{{ old('email', $user->email) }}" required autocomplete="username">
@@ -54,8 +54,8 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Cancel">
-                                <input type="submit" class="btn btn-primary" value="Save Changes">
+                                <input type="reset" class="btn btn-secondary" value="Oтмена">
+                                <input type="submit" class="btn btn-primary" value="Сохранить изменения">
                             </div>
                         </div>
                     </form>
@@ -65,7 +65,7 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Текущий пароль</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" name="current_password"
                                     autocomplete="current-password">
@@ -75,7 +75,7 @@
                             @enderror
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">New password</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Новый пароль</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" name="password" autocomplete="new-password">
                                 @error('password')
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Подтвердите пароль</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" name="password_confirmation"
                                     autocomplete="new-password">
@@ -96,8 +96,8 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Cancel">
-                                <input type="submit" class="btn btn-primary" value="Save Changes">
+                                <input type="reset" class="btn btn-secondary" value="Oтмена">
+                                <input type="submit" class="btn btn-primary" value="Сохранить изменения">
                             </div>
                         </div>
                     </form>

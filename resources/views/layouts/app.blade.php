@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="author" content="Madetov Temur" />
     <title>{{ $title ?? 'Dashtreme Admin' }}</title>
+    
     <!-- loader-->
     <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/js/pace.min.js') }}"></script>
@@ -38,7 +39,6 @@
         @include('layouts.minu')
 
         <!--Start topbar header-->
-
         @include('layouts.navigation')
         <!--End topbar header-->
 
@@ -75,7 +75,7 @@
                 <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
             </div>
             <div class="right-sidebar-content">
-                <p class="mb-0">Gaussion Texture</p>
+                <p class="mb-0">Гауссова текстура</p>
                 <hr />
 
                 <ul class="switcher">
@@ -91,7 +91,7 @@
                     <li id="theme18"></li>
                 </ul>
 
-                <p class="mb-0">Gradient Background</p>
+                <p class="mb-0">Градиентный фон</p>
                 <hr />
 
                 <ul class="switcher">
@@ -124,11 +124,6 @@
     <!-- Custom scripts -->
     <script src="{{ asset('assets/js/app-script.js') }}"></script>
     <!-- Chart js -->
-
-    {{-- <script src="{{ asset('assets/plugins/Chart.js/Chart.min.js') }}"></script> --}}
-
-    <!-- Index js -->
-    {{-- <script src="{{ asset('assets/js/index.js') }}"></script> --}}
 
     @stack('scripts')
 </body>

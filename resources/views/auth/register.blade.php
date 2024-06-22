@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Register Admins</title>
+    <title>Регистрация администраторов</title>
     <!-- loader-->
     <link href=" {{ asset('/assets/css/pace.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('/assets/js/pace.min.js') }}"></script>
@@ -50,15 +50,15 @@
                     <div class="text-center">
                         <img src="{{ asset('assets/images/logo-icon.png') }}" alt="logo icon">
                     </div>
-                    <div class="card-title text-uppercase text-center py-3">Sign In</div>
+                    <div class="card-title text-uppercase text-center py-3">Войти</div>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputUsername" class="sr-only">Name</label>
+                            <label for="exampleInputUsername" class="sr-only">Имя</label>
                             <div class="position-relative has-icon-right">
                                 <input type="text" id="exampleInputUsername" name="name"
                                     value="{{ old('name') }}" required autofocus autocomplete="username"
-                                    class="form-control input-shadow" placeholder="Enter Name">
+                                    class="form-control input-shadow" placeholder="Введите Имя">
                                 <div class="form-control-position">
                                     <i class="icon-user"></i>
                                 </div>
@@ -69,11 +69,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputUsername" class="sr-only">Email</label>
+                            <label for="exampleInputUsername" class="sr-only">Aдрес электронной почты</label>
                             <div class="position-relative has-icon-right">
                                 <input type="email" id="exampleInputUsername" name="email"
                                     value="{{ old('email') }}" required autofocus autocomplete="username"
-                                    class="form-control input-shadow" placeholder="Enter email">
+                                    class="form-control input-shadow" placeholder="Введите адрес электронной почты">
                                 <div class="form-control-position">
                                     <i class="icon-user"></i>
                                 </div>
@@ -84,11 +84,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword" class="sr-only">Password</label>
+                            <label for="exampleInputPassword" class="sr-only">Пароль</label>
                             <div class="position-relative has-icon-right">
                                 <input type="password" id="exampleInputPassword" name="password" required
                                     autocomplete="current-password" class="form-control input-shadow"
-                                    placeholder="Enter Password">
+                                    placeholder="Введите Пароль">
                                 <div class="form-control-position">
                                     <i class="icon-lock"></i>
                                 </div>
@@ -99,11 +99,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword" class="sr-only">Confirm Password</label>
+                            <label for="exampleInputPassword" class="sr-only">Подтвердите Пароль</label>
                             <div class="position-relative has-icon-right">
                                 <input type="password" id="exampleInputPassword" name="password_confirmation" required
                                     autocomplete="current-password" class="form-control input-shadow"
-                                    placeholder="Enter Password">
+                                    placeholder="Подтвердите Пароль">
                                 <div class="form-control-position">
                                     <i class="icon-lock"></i>
                                 </div>
@@ -112,12 +112,14 @@
                                 @enderror
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-light btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-light btn-block">Войти</button>
                     </form>
                 </div>
             </div>
             <div class="card-footer text-center py-3">
-                <p class="text-warning mb-0">Do not have an account? <a href="{{ route('login') }}"> Sign Up here</a>
+
+                <p class="text-warning mb-0">Регистрировались? <a href="{{ route('login') }}">Нажмите
+                        здесь</a>
                 </p>
             </div>
         </div>

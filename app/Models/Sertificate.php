@@ -13,7 +13,6 @@ class Sertificate extends Model
     use HasFactory;
 
 
-
     protected $fillable = [
         'full_name',
         'discription', 

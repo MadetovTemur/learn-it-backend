@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\{SertificateDiscriptions, Sertificate};
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 
-use App\Models\{SertificateDiscriptions, Sertificate};
+use Illuminate\Support\Str;
 
 
 class SertificateController extends Controller
@@ -17,8 +17,26 @@ class SertificateController extends Controller
      */
     public function index(Request $request)
     {
-        $sertificates = Sertificate::paginate(50);
+        $query = $request->query();
 
+        if (array_key_exists('sort', $query) and empty($query['sort'])) {
+            $sertificates = Sertificate::paginate(50);
+        } else if(array_key_exists('sort', $query) and $query['sort'][0] == '-') {
+            $sertificates = Sertificate::orderByDesc(str_replace('-', '', $query['sort']))->paginate(50);
+        }elseif(array_key_exists('sort', $query)) {
+            $sertificates = Sertificate::orderBy($query['sort'])->paginate(50);
+        } else {
+            $sertificates = Sertificate::paginate(50);
+        }
+
+        if (array_key_exists('q', $query) and !empty($query['q'])) {
+            $q = $query['q'];
+            $sertificates = Sertificate::where('full_name', 'like', '%'.$q.'%')
+                ->orWhere('telephone', 'like', '%'.$q.'%')
+                ->orWhere('created_at', 'like', '%'.$q.'%')
+                ->get();
+        }
+        // dd($sertificate);
         return view('sertificates.index', ['sertificates' 
                                         => $sertificates]);
     }
@@ -80,15 +98,20 @@ class SertificateController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $sertificate = Sertificate::where('id', $id)->first() ?? abort(404);
+
         $result = $request->validate([
             'full_name' => ['required', 'max:255'],
-            'sertificate_discription_id' => ['required', 'exists:sertificate_discriptions,id']
+            'telephone' => ['nullable', 'unique:sertificates,telephone,' . $sertificate->id],
+            'discription' => ['required']
         ]);
 
-        $sertificate = Sertificate::where('id', $id)->first() ?? abort(404);
         $sertificate->update($result);
 
-        return Redirect::route('sertificates.index');
+        return  response()->json([
+            'response' => 'ok',
+            'csrf-token' => csrf_token()
+        ], 200);
     }
 
     /**
@@ -97,7 +120,6 @@ class SertificateController extends Controller
     public function destroy(string $id)
     {
         
-
         $sertificate = Sertificate::where('id', $id)->first() ?? abort(404);
         
         $sertificate->delete();
@@ -113,4 +135,6 @@ class SertificateController extends Controller
                 ['sertificat' => Sertificate::where('uuid', $uuid)->first() ?? abort(404)
             ]);
     }
+
+    
 }

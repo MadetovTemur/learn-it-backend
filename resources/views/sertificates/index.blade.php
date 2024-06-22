@@ -4,18 +4,49 @@
     </x-slot>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Sertificates</h5>
-            <a href="{{ route('sertificates.create') }}" class="btn btn-light px-5 mb-2">Create</a>
-            <button disabled class="btn btn-light px-5 mb-2">Download</button>
+            <h5 class="card-title">
+                Sertificates
+            </h5>
+
+            @push('navigation')
+                <a href="{{ route('sertificates.create') }}" class="ml-2 btn btn-light px-5">Create</a>
+                <button disabled class="btn btn-light px-5">Download</button>
+            @endpush
 
             <div class="table-responsive">
+
                 <table class="table table-striped">
                     <thead>
-                        <tr+>
+                        <tr>
                             <th scope="coll">Select</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Created at</th>
+                            <th scope="col">
+                                @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-id')
+                                    <a href="?sort=id">ID</a>
+                                @else
+                                    <a href="?sort=-id">ID</a>
+                                @endif
+                            </th>
+                            <th scope="col">
+                                @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-full_name')
+                                    <a href="?sort=full_name">Full Name</a>
+                                @else
+                                    <a href="?sort=-full_name">Full Name</a>
+                                @endif
+                            </th>
+                            <th scope="col">
+                                @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-telephone')
+                                    <a href="?sort=telephone">Telephone</a>
+                                @else
+                                    <a href="?sort=-telephone">Telephone</a>
+                                @endif
+                            </th>
+                            <th scope="col">
+                                @if (array_key_exists('sort', request()->query()) and request()->query()['sort'] == '-created_at')
+                                    <a href="?sort=created_at">Created at</a>
+                                @else
+                                    <a href="?sort=-created_at">Created at</a>
+                                @endif
+                            </th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -26,8 +57,10 @@
                                     <input type="checkbox" id="student" name="students[]" value="{{ $item['id'] }}">
                                 </td>
                                 <td>{{ $item['id'] }}</td>
-                                <td><a href="{{ route('sertificates.show', $item['id']) }}">{{ $item['full_name'] }}</a>
+                                <td>
+                                    <a href="{{ route('sertificates.show', $item['id']) }}">{{ $item['full_name'] }}</a>
                                 </td>
+                                <td>{{ $item['telephone'] }}</td>
                                 <th scope="row">{{ date_create($item['created_at'])->format('m.d.Y') }}</th>
                                 <td style="display: flex; gap: 5px;">
                                     <a style="padding: 6px 19px;" class="btn btn-light px-5 mb-2"
@@ -49,9 +82,14 @@
                 </table>
             </div>
         </div>
-        <div class="card-footer">
-            {{ $sertificates->links() }}
-        </div>
+
+        @if (!request()->query()['q'])
+            <div class="card-footer">
+                {{ $sertificates->links() }}
+            </div>
+        @endif
+
+
     </div>
 
     <script type="text/javascript">
